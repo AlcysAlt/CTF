@@ -3,8 +3,11 @@
 
 <?php
 session_start();
+echo 'index page';
 
-$_SESSION['loading']='yes';
+$_SESSION['admin_access']='yes';
+
+
 /*
 $firstName = 'John';
 $lastName = 'Smith';

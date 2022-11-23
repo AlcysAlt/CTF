@@ -2,14 +2,17 @@
 <html>
 
 <?php
-header("")
+echo 'admin page';
 session_start();
-if($_SESSION['loading']=='yes'){
+if($_SESSION['admin_access']=='yes'){
+    
 echo 'all good';
 }else{
+
 echo 'bad, redirect back or whatever';
 }
-$_SESSION['loading']=''; // clear session var
+
+$_SESSION['admin_access']='';
 
 
 ?> 
