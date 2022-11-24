@@ -7,16 +7,15 @@ echo $_SERVER['REMOTE_ADDR'];
 echo 'server address:';
 echo $_SERVER['SERVER_ADDR'];
 // quesry string parameters are accessible through $_GET or $_REQUEST
+session_start();
 switch($_GET['page'])
 {
     case 1:
-        session_start();
         $_SESSION['redirected'] = true;
         $page = 'page1.php'; 
         header('location: '. $page); 
         break;
     case 2:
-        session_start();
         $_SESSION['redirected'] = true;
         $page = 'page2.php';
         header('location: '. $page); 
@@ -25,7 +24,6 @@ switch($_GET['page'])
         echo 'access denied';
 
     default:
-        session_start();
         $_SESSION['redirected'] = true;
         $page = $_GET['page'];
         header('location: '. $page); 
