@@ -3,11 +3,12 @@
 
 <?php
 session_start();
-echo 'index page';
-
 $_SESSION['admin_access']='yes';
-
-
+echo 'index page, remote address:';
+echo $_SERVER['REMOTE_ADDR'];
+echo 'server address:';
+echo $_SERVER['SERVER_ADDR'];
+echo file_get_contents("http://bestsiteever/www/admin.php");
 /*
 $firstName = 'John';
 $lastName = 'Smith';

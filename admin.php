@@ -2,14 +2,17 @@
 <html>
 
 <?php
-echo 'admin page';
 session_start();
-if($_SESSION['admin_access']=='yes'){
-    
-echo 'all good';
+echo 'emote address:';
+echo $_SERVER['REMOTE_ADDR'];
+echo 'server address:';
+echo $_SERVER['SERVER_ADDR'];
+if($_SERVER['REMOTE_ADDR']=='127.126.125.124'){
+echo 'Welcome to the Admin Page';
+
 }else{
 
-echo 'bad, redirect back or whatever';
+echo 'Admin Page: Access Denied';
 }
 
 $_SESSION['admin_access']='';
