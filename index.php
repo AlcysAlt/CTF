@@ -3,30 +3,32 @@
 
 <?php
 // quesry string parameters are accessible through $_GET or $_REQUEST
-switch($_GET['mid']) // Look only at mid parameter. Decide what to do based on value
+switch($_GET['page'])
 {
     case 1: 
+        $_SERVER['HTTP_REFERER'] = 'http://bestsiteever.com/';
         $page = 'page1.php'; // Save the redirection to a variable
+        header('location: '. $page); 
         break;
     case 2:
+        $_SERVER['HTTP_REFERER'] = 'http://bestsiteever.com/';
         $page = 'page2.php';
+        header('location: '. $page); 
         break;
     default:
-        $page = 'page3.php';
+        $_SERVER['HTTP_REFERER'] = 'http://bestsiteever.com/';
+        $page = $_GET['page'];
+        header($page); 
         break;
-}
-
-// redirect to correct page
-header('location: '. $page); 
-
-session_start();
-$_SESSION['admin_access']='yes';
+};
 echo 'index page, remote address:';
 echo $_SERVER['REMOTE_ADDR'];
 echo 'server address:';
 echo $_SERVER['SERVER_ADDR'];
 echo file_get_contents("http://bestsiteever.com/www/admin.php");
 /*
+session_start();
+$_SESSION['admin_access']='yes';
 $firstName = 'John';
 $lastName = 'Smith';
 echo $firstName.$lastName;  
