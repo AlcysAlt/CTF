@@ -22,6 +22,7 @@ switch($_GET['page'])
         break;
     case 'secret.php':
         echo 'access denied';
+        break;
 
     default:
         $_SESSION['redirected'] = true;
@@ -59,5 +60,5 @@ foreach($array as $key => $data) {
 */
 ?> 
 <html>
-    
+
 </html>
