@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+
 
 <?php
 echo 'index page, remote address:';
@@ -31,6 +31,7 @@ switch($_GET['page'])
 };
 
 
+
 /*
 echo file_get_contents("http://bestsiteever.com/www/secret.php");
 session_start();
@@ -57,3 +58,6 @@ foreach($array as $key => $data) {
 }
 */
 ?> 
+<html>
+    
+</html>
