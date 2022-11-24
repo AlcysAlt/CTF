@@ -3,7 +3,7 @@
 // quesry string parameters are accessible through $_GET or $_REQUEST
 session_start();
 $_SESSION['redirected'] = False;
-if (isset($_GET['page'])){
+if (isset($_GET['page']) and !empty($_GET['page']) and $_GET['page'] !== ''){
     switch($_GET['page'])
     {
         case 1:
@@ -30,7 +30,6 @@ if (isset($_GET['page'])){
     $_SESSION['redirected'] = False;
     echo 'Access Denied';
 }
-
 ?> 
 <html>
 
