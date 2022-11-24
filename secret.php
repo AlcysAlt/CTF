@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <?php
 session_start();
- if($_SESSION['redirected'] == true){
-    echo 'Top Secret Page<br>';
+if (!isset($_SESSION['redirected']) or empty($_SESSION['redirected']) or $_SESSION['redirected'] == '') {
+    echo 'Access Denied';
+    exit; // do nothing if hit directly.
+  } else if ($_SESSION['redirected'] == True){
     echo '!ThankYouWebServer:D!';
- }  else{
-
-    die('Access Denied');
-};
+    $_SESSION['redirected'] = '';
+} else {
+    echo 'Error';
+}
 
 ?> 
 <html>

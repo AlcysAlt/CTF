@@ -3,7 +3,7 @@
 
 <?php
 session_start();
-$_SESSION['redirected'] = '';
+$_SESSION['redirected'] = False;
 echo 'page 1';
 ?> 
 
