@@ -32,9 +32,9 @@ function takeData($userInput){
 
 };
 //Data is parsed and used to access the required variable from a deserialized object
-function parseData($input2parse, $requiredVariable){
+function parseData($data2deserialize, $requiredVariable){
 
-    $parsedData = unserialize($input2parse);
+    $parsedData = unserialize($data2deserialize);
 
     if (null !== $parsedData){
         return eval($parsedData->requiredVariable);
