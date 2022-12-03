@@ -37,7 +37,8 @@ function parseData($data2deserialize, $requiredVariable){
     $parsedData = unserialize($data2deserialize);
 
     if (null !== $parsedData){
-        return eval($parsedData->requiredVariable);
+        return eval($parsedData->$requiredVariable);
+        
     }
     else{
         return 'Error: No data provided';
@@ -49,11 +50,11 @@ function parseData($data2deserialize, $requiredVariable){
 //$admin = new ConvisoPerson();
 //$admin_serialize = serialize($admin);
 $flag = new Flag();
-$serialize_flag = serialize($flag);
+$serialize_flag = takeData($flag);
 //echo $serialize_flag;
-$flag_unserialize = unserialize($serialize_flag);
+$flag_unserialize = parseData($serialize_flag, "getFlag()");
 //echo $flag_unserialize->getFlag();
-echo $flag_unserialize;
+//echo $flag_unserialize;
  
  
  
