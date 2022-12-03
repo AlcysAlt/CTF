@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+//Source: https://www.w3schools.com/php/php_mysql_connect.asp
 //Login Form Source: https://www.simplilearn.com/tutorials/php-tutorial/php-login-form
 
 // Starts the PHP session, to allow persistence of variables between web pages.
@@ -44,8 +45,7 @@ session_start();
     <label>Password</label>
 
     <input type="password" name="password" placeholder="Password"><br> 
-
-    <button type="submit" name="submitButton">Login</button>
+    <input type="submit" name = "submitButton" value="Login">
 
 
  </form>
@@ -53,47 +53,84 @@ session_start();
 </body>
 
 <?php
-//Source: https://www.w3schools.com/php/php_mysql_connect.asp
-function login()
-{
-   echo "button click is working \n";
 
+// Connect to MySQL Database
+function connectToDB(){
 // Database authentication credentials
 $MySQLservername = "bestsiteever.com";
 $MySQLusername = "root";
 $MySQLpassword = "IncrediblySecurePassword1337";
 $MySQLdbName = "BestDatabaseEver";
-
-// Connect to MySQL Database
 $conn = new mysqli($MySQLservername, $MySQLusername, $MySQLpassword, $MySQLdbName);
 
+// Check database connection
+if ($conn->connect_error) {
+    die("Connection to database failed.");
+  }
+  else{
+      echo "Connected successfully";
+      return $conn;
+  }
+
+
+}
+
+function loginQuery($conn, $username, $password){
+    $sql = 'SELECT Username, Password, Email FROM LoginData WHERE Username ="' . $username . '" AND Password ="' . $password . '"';
+        //$sql = 'SELECT Username, Password, Email FROM LoginData';
+        $query = mysqli_query($conn, $sql)
+        or die ("Bad Query");
+        return $query;
+           
+
+}
+
+function loginForm($conn, $username, $password){
+    $result = loginQuery($conn, $username, $password);
+    $matchFound = mysqli_num_rows($result);
+    if ($matchFound > 0){
+        echo ("Login Successful");
+        displayQueryResults($result);
+        $cookieName = $username;
+        $cookieValue = session_id();
+        $time = time()+(86400 * 1); // 1 Day Expiration
+        setcookie("$cookieName", "$cookieValue", $time);
+
+    } else{
+        echo ("Login Failed, please try again");
+
+    }
+
+   }
+
+function displayQueryResults($results){
+    while($row = mysqli_fetch_assoc($results)){
+        echo"<br>";
+        print_r($row);
+    }
+
+}
+
+function validateLogin($cookieName){
+
+
+}
+
+function login()
+{
+// Connect to MySQL Database
+$DBconn = connectToDB();
 //Test User Data
 $testUsername = 'bmcgauhy0';
 $testPass = 'jgm1Ow0rm';	
 
-// Check database connection
-if ($conn->connect_error) {
-  die("Connection to database failed.");
-}
-else{
-    echo "Nice";
-}
-//$sql = 'SELECT * FROM LoginData WHERE Username ="' . $testUsername . '" AND Password ="' . $testPass . '"';
-$sql = 'SELECT * FROM LoginData';
-$query = $conn->query($sql)
-or die (mysqli_error($conn));
-echo($conn->error);
-while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
-    $str .= "<tr>";
-    $str .= "<td>" . $row['Username'] . "</td>";
-    $str .= "<td>" . $row['Password'] . "</td>";
-    $str .= "<td>" . $row['Email'] . "</td>";
-    $str .= "</tr>";
-}
+//$result = loginQuery($DBconn, $testUsername, $testPass);
 
-$str .= "</table>";
+//$matchFound = mysqli_num_rows($result);
+loginForm($DBconn, $testUsername, $testPass);
 
-echo $str;
+//var_dump($_POST);
+//displayQueryResults($result);
 
 }
 
