@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-//Source: https://www.w3schools.com/php/php_mysql_connect.asp
+//MySQL Source: https://www.w3schools.com/php/php_mysql_connect.asp
 //Login Form Source: https://www.simplilearn.com/tutorials/php-tutorial/php-login-form
 
 // Starts the PHP session, to allow persistence of variables between web pages.
@@ -17,7 +17,7 @@ session_start();
     echo 'Error';
 }
 */
-//?> 
+?> 
 <head>
 
 <title>LOGIN</title>
@@ -45,7 +45,7 @@ session_start();
     <label>Password</label>
 
     <input type="password" name="password" placeholder="Password"><br> 
-    <input type="submit" name = "submitButton" value="Login">
+    <input type="submit" name = "submit" value="Login">
 
 
  </form>
@@ -68,7 +68,6 @@ if ($conn->connect_error) {
     die("Connection to database failed.");
   }
   else{
-      echo "Connected successfully";
       return $conn;
   }
 
@@ -91,8 +90,9 @@ function loginForm($conn, $username, $password){
     if ($matchFound > 0){
         echo ("Login Successful");
         displayQueryResults($result);
-        $cookieName = $username;
-        $cookieValue = session_id();
+        $cookieName = 'User';
+        //$cookieValue = session_id();
+        $cookieValue = $username;
         $time = time()+(86400 * 1); // 1 Day Expiration
         setcookie("$cookieName", "$cookieValue", $time);
 
@@ -111,31 +111,40 @@ function displayQueryResults($results){
 
 }
 
-function validateLogin($cookieName){
+function validateLogin(){
+    if(!isset($_COOKIE['User'])){
+        return False;
+    } else {
+        $value = $_COOKIE['User'];
+        return True;
+    }
 
 
 }
 
-function login()
-{
-// Connect to MySQL Database
-$DBconn = connectToDB();
-//Test User Data
-$testUsername = 'bmcgauhy0';
-$testPass = 'jgm1Ow0rm';	
+function login(){
+if (isset($_POST['submit'])){
+    // Connect to MySQL Database
+    $DBconn = connectToDB();    
 
-//$result = loginQuery($DBconn, $testUsername, $testPass);
+    //Test User Data
+    $testUsername = $_POST['username'];
+    $testPass = $_POST['password'];	
+    loginForm($DBconn, $testUsername, $testPass);
+    echo(var_dump($_POST));
+    } else{
+        
+    }
 
-//$matchFound = mysqli_num_rows($result);
-loginForm($DBconn, $testUsername, $testPass);
 
-//var_dump($_POST);
-//displayQueryResults($result);
+
+
 
 }
 
 /////////////
 login();
+echo validateLogin();
 
 ?>
 
