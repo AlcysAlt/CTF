@@ -5,7 +5,7 @@
 // Starts the PHP session, to allow persistence of variables between web pages.
 session_start();
 // //Checks if the the session variable 'redirected' is set, deny access if empty.
-if (!isset($_SESSION['redirected']) or empty($_SESSION['redirected']) or $_SESSION['redirected'] == '') {
+/*if (!isset($_SESSION['redirected']) or empty($_SESSION['redirected']) or $_SESSION['redirected'] == '') {
     echo 'Access Denied';
     exit; 
     //Otherwise if redirected variable is set, empty the variable and display the web page.
@@ -15,7 +15,8 @@ if (!isset($_SESSION['redirected']) or empty($_SESSION['redirected']) or $_SESSI
 } else {
     echo 'Error';
 }
-?> 
+*/
+//?> 
 <head>
 
 <title>LOGIN</title>
@@ -44,7 +45,7 @@ if (!isset($_SESSION['redirected']) or empty($_SESSION['redirected']) or $_SESSI
 
     <input type="password" name="password" placeholder="Password"><br> 
 
-    <button type="submit">Login</button>
+    <button type="submit" name="submitButton">Login</button>
 
 
  </form>
@@ -53,6 +54,9 @@ if (!isset($_SESSION['redirected']) or empty($_SESSION['redirected']) or $_SESSI
 
 <?php
 //Source: https://www.w3schools.com/php/php_mysql_connect.asp
+function login()
+{
+   echo "button click is working \n";
 
 // Database authentication credentials
 $MySQLservername = "bestsiteever.com";
@@ -61,25 +65,40 @@ $MySQLpassword = "IncrediblySecurePassword1337";
 $MySQLdbName = "BestDatabaseEver";
 
 // Connect to MySQL Database
-$conn = new mysqli($MySQLservername, $MySQLusername, $MySQLpassword);
+$conn = new mysqli($MySQLservername, $MySQLusername, $MySQLpassword, $MySQLdbName);
+
+//Test User Data
+$testUsername = 'bmcgauhy0';
+$testPass = 'jgm1Ow0rm';	
 
 // Check database connection
 if ($conn->connect_error) {
   die("Connection to database failed.");
 }
 else{
-    echo "Connected successfully";
+    echo "Nice";
+}
+//$sql = 'SELECT * FROM LoginData WHERE Username ="' . $testUsername . '" AND Password ="' . $testPass . '"';
+$sql = 'SELECT * FROM LoginData';
+$query = $conn->query($sql)
+or die (mysqli_error($conn));
+echo($conn->error);
+while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+    $str .= "<tr>";
+    $str .= "<td>" . $row['Username'] . "</td>";
+    $str .= "<td>" . $row['Password'] . "</td>";
+    $str .= "<td>" . $row['Email'] . "</td>";
+    $str .= "</tr>";
 }
 
-$sqlQuery = 'SELECT * FROM LoginData WHERE Username ="' + $username + '" AND Password ="' + $password + '"';
-$sqlResponse = $sqlQuery->query($sqlQuery);
-//'SELECT UserID, Username, Password, Email FROM LoginData WHERE Username =' + $username + 'AND '; 
+$str .= "</table>";
 
+echo $str;
 
-//Closes connection to the database.
-$conn->close(); 
+}
 
-
+/////////////
+login();
 
 ?>
 
