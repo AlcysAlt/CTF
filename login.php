@@ -46,6 +46,7 @@ session_start();
 
     <input type="password" name="password" placeholder="Password"><br> 
     <input type="submit" name = "submit" value="Login">
+    <input type="submit" name = "submit" value="Reset">
 
 
  </form>
@@ -81,6 +82,10 @@ function loginQuery($conn, $username, $password){
         or die ("Bad Query");
         return $query;
            
+
+}
+
+function resetPassword(){
 
 }
 
@@ -123,28 +128,33 @@ function validateLogin(){
 }
 
 function login(){
-if (isset($_POST['submit'])){
-    // Connect to MySQL Database
     $DBconn = connectToDB();    
 
     //Test User Data
     $testUsername = $_POST['username'];
     $testPass = $_POST['password'];	
     loginForm($DBconn, $testUsername, $testPass);
-    echo(var_dump($_POST));
-    } else{
-        
-    }
-
-
-
+    echo(var_dump($_POST)); 
 
 
 }
+function ui(){
+    if (isset($_POST['submit']) AND $_POST['submit'] == 'Login'){
+        echo("login");
+        // Connect to MySQL Database
+        } else if (isset($_POST['submit']) AND ($_POST['submit']) == 'Reset'){
+            echo('reset');
+        } else {
+            echo("IDK LMAOOOOO");
+        }
+            
+
+}
+       
 
 /////////////
-login();
-echo validateLogin();
+ui();
+
 
 ?>
 
