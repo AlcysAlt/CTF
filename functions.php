@@ -67,9 +67,9 @@ $conn -> close();
 
 function changePassword($username, $newPass){
     $conn = connectToDB();
-    $sql = 'UPDATE LoginData SET Password = "' . $newPass . '" WHERE Username = "' . $username . '"';
-    $result = myseli_query($conn, $sql);
-    $conn - close();
+    $sql = "UPDATE LoginData SET Password ='$newPass' WHERE Username ='$username'";
+    $result = mysqli_query($conn, $sql);
+    $conn -> close();
 
 }
 

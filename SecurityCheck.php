@@ -50,10 +50,10 @@ session_start();
 <?php
         //When the submit button is clicked and the required fields are filled.
         if (isset($_POST['submit']) AND $_POST['submit'] == 'Submit' AND isset($_SESSION['Username']) AND isset($_POST['password'])){
-           //
+           //if the required fields 
             if ($_SESSION['Q1'] == $_POST['answer1'] AND $_SESSION['Q2'] == $_POST['answer2'] AND $_SESSION['Q3'] == $_POST['answer3']){
                 echo("PASSWORD RESET");
-                changePassword($_POST['password'], $_SESSION['Username']);
+                changePassword( $_SESSION['Username'], $_POST['password']);
                 $_POST['password'] = '';
             } else {
                 echo("Incorrect answers.");
