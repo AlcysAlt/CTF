@@ -52,11 +52,17 @@ session_start();
         if (isset($_POST['submit']) AND $_POST['submit'] == 'Submit' AND isset($_SESSION['Username']) AND isset($_POST['password'])){
            //if the required fields 
             if ($_SESSION['Q1'] == $_POST['answer1'] AND $_SESSION['Q2'] == $_POST['answer2'] AND $_SESSION['Q3'] == $_POST['answer3']){
-                echo("PASSWORD RESET");
+                echo("Password Reset Successfully");
+                echo"<br>";
                 changePassword( $_SESSION['Username'], $_POST['password']);
                 $_SESSION['task7flag2'] = 1;
                 $_POST['password'] = '';
                 task7();
+                $_POST['answer1'] = '';
+                $_POST['answer2'] = '';
+                $_POST['answer3'] = '';
+                $_POST['password'] = '';
+
             } else {
                 echo("Incorrect answers.");
                 $_POST['answer1'] = '';

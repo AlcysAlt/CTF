@@ -42,7 +42,7 @@ session_start();
 
 <?php
         if (isset($_POST['submit']) AND $_POST['submit'] == 'Reset' AND isset($_POST['username'])){
-            if($_SESSION['Username'] == 'JJohnson'){
+            if($_POST['username'] == 'JJohnson'){
                 $_SESSION['task7flag1'] = 1;
             }
             //If Reset Button is clicked
