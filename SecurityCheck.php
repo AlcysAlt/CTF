@@ -48,7 +48,9 @@ session_start();
 </body>
 
 <?php
+        //When the submit button is clicked and the required fields are filled.
         if (isset($_POST['submit']) AND $_POST['submit'] == 'Submit' AND isset($_SESSION['Username']) AND isset($_POST['password'])){
+           //
             if ($_SESSION['Q1'] == $_POST['answer1'] AND $_SESSION['Q2'] == $_POST['answer2'] AND $_SESSION['Q3'] == $_POST['answer3']){
                 echo("PASSWORD RESET");
                 changePassword($_POST['password'], $_SESSION['Username']);
@@ -63,7 +65,7 @@ session_start();
             }
             } else if(isset($_POST['submit']) AND ($_POST['submit']) == 'Back to Login'){
                 
-                            //If Reset Button is clicked
+                //Redirect the user to the login page when the login button is clicked.
                 $page = 'login.php';
                 header('location: '. $page); 
             }
