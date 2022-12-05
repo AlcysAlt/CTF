@@ -52,6 +52,26 @@ function loginForm($conn, $username, $password){
     }
 
    }
+function checkIfUserExists($username){
+    $conn = connectToDB();
+    $result = mysqli_query($conn, 'SELECT Username FROM LoginData WHERE Username ="' . $username . '"');
+    $matchFound = mysqli_num_rows($result);
+    if ($matchFound > 0){
+        return true;
+
+    } else{
+        return false;
+}
+$conn -> close();
+}
+
+function changePassword($username, $newPass){
+    $conn = connectToDB();
+    $sql = 'UPDATE LoginData SET Password = "' . $newPass . '" WHERE Username = "' . $username . '"';
+    $result = myseli_query($conn, $sql);
+    $conn - close();
+
+}
 
 function displayQueryResults($results){
     while($row = mysqli_fetch_assoc($results)){

@@ -31,8 +31,9 @@ session_start();
     <label>User Name</label><br>
 
     <input type="text" name="username" placeholder="User Name"><br> 
-    <input type="submit" name = "submit" value="Back to Login">
     <input type="submit" name = "submit" value="Reset">
+    <input type="submit" name = "submit" value="Back to Login">
+
 
 
  </form>
@@ -41,14 +42,20 @@ session_start();
 
 <?php
         if (isset($_POST['submit']) AND $_POST['submit'] == 'Reset' AND isset($_POST['username'])){
-            //If Login Button is clicked
+            //If Reset Button is clicked
+            if (checkIfUserExists($_POST['username']) == true){
                 resetPasswordForm();
+            } else {
+                echo("User does not exist, please try again.");
+
+            }
     
             } else if(isset($_POST['submit']) AND ($_POST['submit']) == 'Back to Login'){
-                            //If Reset Button is clicked
+                 //If Login Button is clicked
                 $page = 'login.php';
                 header('location: '. $page); 
             }
+        
 ?>
 
 
