@@ -54,7 +54,9 @@ session_start();
             if ($_SESSION['Q1'] == $_POST['answer1'] AND $_SESSION['Q2'] == $_POST['answer2'] AND $_SESSION['Q3'] == $_POST['answer3']){
                 echo("PASSWORD RESET");
                 changePassword( $_SESSION['Username'], $_POST['password']);
+                $_SESSION['task7flag2'] = 1;
                 $_POST['password'] = '';
+                task7();
             } else {
                 echo("Incorrect answers.");
                 $_POST['answer1'] = '';

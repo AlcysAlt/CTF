@@ -52,6 +52,13 @@ function loginForm($conn, $username, $password){
     }
 
    }
+function task7(){
+    if (isset($_SESSION['task7flag1']) AND $_SESSION['task7flag1'] == 1 AND isset($_SESSION['task7flag2']) AND $_SESSION['task7flag2'] = 1){
+        echo("Congratulations on resetting an admins password, here's the flag: !TerribleAuthenticationSystems!");
+    }
+
+}
+
 function checkIfUserExists($username){
     $conn = connectToDB();
     $result = mysqli_query($conn, 'SELECT Username FROM LoginData WHERE Username ="' . $username . '"');

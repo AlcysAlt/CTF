@@ -42,6 +42,9 @@ session_start();
 
 <?php
         if (isset($_POST['submit']) AND $_POST['submit'] == 'Reset' AND isset($_POST['username'])){
+            if($_SESSION['Username'] == 'JJohnson'){
+                $_SESSION['task7flag1'] = 1;
+            }
             //If Reset Button is clicked
             if (checkIfUserExists($_POST['username']) == true){
                 resetPasswordForm();
