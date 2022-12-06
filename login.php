@@ -40,6 +40,19 @@ session_start();
     if (isset($_POST['submit']) AND $_POST['submit'] == 'Login'){
         //If Login Button is clicked
             login();
+            $loggedIn = validateLogin();
+            if ($loggedIn == True){
+                $page = 'account.php';
+                $result = getAccountInfo();
+                displayQueryResults($result);
+                displayQueryResults($_SESSION['info']);
+                //header('location: '. $page); 
+                
+            } else if(validateLogin() == False){
+                
+            } else {
+                echo("Error");
+            }
 
         } else if(isset($_POST['submit']) AND ($_POST['submit']) == 'Forgot my password'){
                         //If Reset Button is clicked

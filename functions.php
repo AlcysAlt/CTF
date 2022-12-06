@@ -45,9 +45,11 @@ function loginForm($conn, $username, $password){
         $cookieValue = $username;
         $time = time()+(86400 * 1); // 1 Day Expiration
         setcookie("$cookieName", "$cookieValue", $time);
+        $_SESSION['Logged In'] = 1;
 
     } else{
         echo ("Login Failed, please try again");
+        $_SESSION['Logged In'] = 0;
 
     }
 
@@ -72,6 +74,18 @@ function checkIfUserExists($username){
 $conn -> close();
 }
 
+function getAccountInfo(){
+    if(validateLogin() == True){
+        $conn = connectToDB();
+        $sql = 'SELECT * FROM LoginDetails WHERE Username ="' . $_COOKIE['User'] . '"';
+        $result = mysqli_query($conn, $sql) or die('Error');
+        return $result;
+    } else {
+        echo("Error: Bad Pass");
+    }
+    $conn -> close();
+}
+
 function changePassword($username, $newPass){
     $conn = connectToDB();
     $sql = "UPDATE LoginData SET Password ='$newPass' WHERE Username ='$username'";
@@ -89,11 +103,12 @@ function displayQueryResults($results){
 }
 
 function validateLogin(){
-    if(!isset($_COOKIE['User'])){
-        return False;
-    } else {
+    if(isset($_COOKIE['User']) AND isset($_SESSION['Logged In']) AND $_SESSION['Logged In'] == 1){
         $value = $_COOKIE['User'];
         return True;
+
+    } else {
+        return False;
     }
 
 
