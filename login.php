@@ -43,10 +43,8 @@ session_start();
             $loggedIn = validateLogin();
             if ($loggedIn == True){
                 $page = 'account.php';
-                $result = getAccountInfo();
-                displayQueryResults($result);
-                displayQueryResults($_SESSION['info']);
-                //header('location: '. $page); 
+                $_SESSION['redirected'] = True;
+                header('location: '. $page); 
                 
             } else if(validateLogin() == False){
                 

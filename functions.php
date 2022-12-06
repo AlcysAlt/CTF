@@ -22,6 +22,8 @@ function loginQuery($conn, $username, $password){
     $sql = 'SELECT Username, Password, Email FROM LoginData WHERE Username ="' . $username . '" AND Password ="' . $password . '"';
         $query = mysqli_query($conn, $sql)
         or die ("Bad Query");
+        echo($sql);
+        echo('<br>');
         return $query;
            
 
@@ -76,10 +78,15 @@ $conn -> close();
 
 function getAccountInfo(){
     if(validateLogin() == True){
+        
         $conn = connectToDB();
-        $sql = 'SELECT * FROM LoginDetails WHERE Username ="' . $_COOKIE['User'] . '"';
-        $result = mysqli_query($conn, $sql) or die('Error');
-        return $result;
+        //print_r($_COOKIE);
+        echo($_COOKIE['User']);
+        $sql = 'SELECT Username, Email FROM LoginData WHERE Username ="' . $_COOKIE['User'] . '"';
+        $query = mysqli_query($conn, $sql)
+        or die ("Bad Query");
+        return $query;
+
     } else {
         echo("Error: Bad Pass");
     }
