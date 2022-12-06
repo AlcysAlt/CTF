@@ -8,7 +8,10 @@ require('functions.php');
 // Starts the PHP session, to allow persistence of variables between web pages.
 session_start();
 if (isset($_POST['funnyButton']) AND $_POST['funnyButton'] == "Funny button that doesn't do anything"){
+    echo('Top Secret Information');
+    echo('<br>');
     echo('!TheButtonWasALie!');
+    echo('<br>');
     echo('<br>');
 
 }
