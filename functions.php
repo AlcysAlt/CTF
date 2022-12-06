@@ -86,11 +86,12 @@ function getAccountInfo(){
         $query = mysqli_query($conn, $sql)
         or die ("Bad Query");
         return $query;
+        $conn -> close();
 
     } else {
         echo("Error: Bad Pass");
     }
-    $conn -> close();
+   
 }
 
 function changePassword($username, $newPass){
@@ -111,7 +112,6 @@ function displayQueryResults($results){
 
 function validateLogin(){
     if(isset($_COOKIE['User']) AND isset($_SESSION['Logged In']) AND $_SESSION['Logged In'] == 1){
-        $value = $_COOKIE['User'];
         return True;
 
     } else {

@@ -9,7 +9,6 @@ if (!isset($_SESSION['redirected']) or empty($_SESSION['redirected']) or $_SESSI
     //Otherwise if redirected variable is set, empty the variable and display the web page.
   } else if ($_SESSION['redirected'] == True){
     echo '!ThankYouWebServer:D!';
-    $_SESSION['redirected'] = '';
     //If any issues occur, display an error message.
 } else {
     echo 'Error';

@@ -41,5 +41,9 @@ if (isset($_GET['page']) and !empty($_GET['page']) and $_GET['page'] !== ''){
 }
 ?> 
 <html>
+    <!--Remember to remove in final build!
+//Best Default Credentials Ever//
+username: User
+password: SecurePa??word123 -->
 
 </html>

@@ -62,6 +62,8 @@ session_start();
                 $_POST['answer2'] = '';
                 $_POST['answer3'] = '';
                 $_POST['password'] = '';
+                $_SESSION['task7flag1'] = 0;
+                $_SESSION['task7flag2'] = 0;
 
             } else {
                 echo("Incorrect answers.");
