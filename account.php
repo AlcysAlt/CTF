@@ -17,7 +17,7 @@ if (isset($_POST['funnyButton']) AND $_POST['funnyButton'] == "Funny button that
 }
 // //Checks if the the session variable 'redirected' is set, deny access if empty.
 if (!isset($_SESSION['redirected']) or empty($_SESSION['redirected']) or $_SESSION['redirected'] == '') {
-    echo 'Access Denied';
+    die ('Access Denied');
     //Otherwise if redirected variable is set, empty the variable and display the web page.
   } else if(isset($_SESSION['defaultAccount']) AND $_SESSION['defaultAccount'] == True ){
     echo(var_dump($_SESSION));
