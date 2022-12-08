@@ -1,45 +1,53 @@
 <?php
+// Connect to the MySQL database using provided authentication credentials
 function connectToDB(){
-// Database authentication credentials
-$MySQLservername = "bestsiteever.com";
-$MySQLusername = "root";
-$MySQLpassword = "IncrediblySecurePassword1337";
-$MySQLdbName = "BestDatabaseEver";
-$conn = new mysqli($MySQLservername, $MySQLusername, $MySQLpassword, $MySQLdbName);
+  // Database authentication credentials
+  $MySQLservername = "bestsiteever.com";
+  $MySQLusername = "root";
+  $MySQLpassword = "IncrediblySecurePassword1337";
+  $MySQLdbName = "BestDatabaseEver";
+  $conn = new mysqli($MySQLservername, $MySQLusername, $MySQLpassword, $MySQLdbName);
 
-// Check database connection
-if ($conn->connect_error) {
+  // Check database connection
+  if ($conn->connect_error) {
     die("Connection to database failed.");
   }
   else{
-      return $conn;
+    return $conn;
   }
-
-
 }
 
+// Construct and execute a SQL query to retrieve user data based on a username and password
 function loginQuery($conn, $username, $password){
-    $sql = 'SELECT Username, Password, Email FROM LoginData WHERE Username ="' . $username . '" AND Password ="' . $password . '"';
-        $query = mysqli_query($conn, $sql)
-        or die ("Bad Query");
-        echo($sql);
-        echo('<br>');
-        return $query;
-           
-
+  // Construct the SQL query
+  $sql = 'SELECT Username, Password, Email FROM LoginData WHERE Username ="' . $username . '" AND Password ="' . $password . '"';
+  // Execute the query
+  $query = mysqli_query($conn, $sql)
+  or die ("Bad Query");
+  // Echo the query for debugging purposes
+  echo($sql);
+  echo('<br>');
+  return $query;
 }
+
+// Construct and execute a SQL query to retrieve security question data based on a username
 function resetPasswordQuery($conn, $username){
-    $sql = 'SELECT SecurityQ1, SecurityQ2, SecurityQ3 FROM LoginData WHERE Username ="' . $username . '"';
-    $query = mysqli_query($conn, $sql)
-    or die ("Bad Query");
-    return $query;
-       
-
+  // Construct the SQL query
+  $sql = 'SELECT SecurityQ1, SecurityQ2, SecurityQ3 FROM LoginData WHERE Username ="' . $username . '"';
+  // Execute the query
+  $query = mysqli_query($conn, $sql)
+  or die ("Bad Query");
+  return $query;
 }
 
+// Process a login request and display a message indicating the success or failure of the login
 function loginForm($conn, $username, $password){
-    $result = loginQuery($conn, $username, $password);
-    $matchFound = mysqli_num_rows($result);
+  // Retrieve the results of the login query
+  $result = loginQuery($conn, $username, $password);
+  // Count the number of matches found in the results
+  $matchFound = mysqli_num_rows($result);
+  //
+
     if ($matchFound > 0){
         echo ("Login Successful");
         displayQueryResults($result);
