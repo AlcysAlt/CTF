@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <?php
 require('functions.php');
-//MySQL Source: https://www.w3schools.com/php/php_mysql_connect.asp
-//Login Form Source: https://www.simplilearn.com/tutorials/php-tutorial/php-login-form
-
 // Starts the PHP session, to allow persistence of variables between web pages.
 session_start();
 
 ?> 
-<head>
+<html>
 
+    <!----------Title Table---------->
+    <table align="center">
+        <tr>
+            <th>
+            
 <title>Reset Password</title>
 
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -32,13 +34,8 @@ session_start();
 
     <input type="text" name="username" placeholder="User Name"><br> 
     <input type="submit" name = "submit" value="Reset">
-    <input type="submit" name = "submit" value="Back to Login">
+    <input type="submit" name = "submit" value="Back to Login"><br>
 
-
-
- </form>
-
-</body>
 
 <?php
         if (isset($_POST['submit']) AND $_POST['submit'] == 'Reset' AND isset($_POST['username'])){
@@ -58,11 +55,62 @@ session_start();
                 $page = 'login.php';
                 header('location: '. $page); 
             }
+            $_SESSION['redirected'] = False;
         
 ?>
-
-
 <html>
+
+    <!----------Footer---------->
+    <br>
+    <footer>
+        <table align="center">
+        <tr>
+            <td>
+            <a href="http://bestsiteever.com/CTF/index.php"> Home </a>
+            </td>
+            <td>
+            |
+            </td>
+            <td>
+            <a href="http://bestsiteever.com/CTF/index.php?page=aboutUs.php"> About Us </a>
+            </td>
+            <td>
+            |
+            </td>
+            <td>
+                <a href="http://bestsiteever.com/CTF/account.php"> Account </a>
+            </td>
+            <td>
+                |
+            </td>
+            <td>
+                <a href="http://bestsiteever.com/CTF/index.php?page=login.php"> Log In </a>
+            </td>
+            <td>
+            |
+            </td>
+            <td>
+                <a href="http://bestsiteever.com/CTF/index.php?page=gallery.php"> Gallery</a>
+            </td>
+            <td>
+            |
+            </td>
+            <td>
+                <a href="http://bestsiteever.com/CTF/index.php?page=feedback.php"> Feedback </a>
+            </td>
+        </tr>
+
+        </table>
+        <table align="center">
+            <tr>
+                <th>
+                    <p style="font-size:12px">Copyright &copy1833</p>
+                </th>
+            </tr>
+
+        </table>
+
+    </footer>
 
 
 </html>

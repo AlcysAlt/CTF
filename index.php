@@ -1,7 +1,59 @@
 <!DOCTYPE html>
+<html>
+<body>
+
+    <!----------Title Table---------->
+    <table align="center">
+        <tr>
+            <th>
+            <h1>Best Site Ever</h1
+            </th>
+            <th>
+        </tr>   
+    </table>
+ 
+
+    <!----------Content Table---------->
+    <table align="center">
+        <tr>
+            <th>
+                <article>
+                    <p>Welcome to the best site ever!</p>
+                </article>
+                <section>
+                    <p style="font-size:15px">  </p>
+                </section>
+
+            </th>
+
+        </tr>
+        <tr>
+        </tr>
+        
+    </table>
+  
+    
+<!--Remember to remove in final build!
+//Best Default Credentials Ever//
+username: User
+password: SecurePa??word123 
+-->
+</body>
+</html>
+
+
+
+
+<html>
+    
+
+</html>
 <?php
 // Starts the PHP session, to allow persistence of variables between web pages.
 session_start();
+if (isset($_POST['submit']) AND $_POST['submit'] == 'Login'){
+    
+}
 //Sets a session variable which allows a web page to identify that the user has been redirected from a web page on the same server.
 $_SESSION['redirected'] = False;
 //Checks if the the page variable from the address bar is set.
@@ -37,13 +89,62 @@ if (isset($_GET['page']) and !empty($_GET['page']) and $_GET['page'] !== ''){
     //If the page variable is empty, it shows an Access Denied Error
 } else {
     $_SESSION['redirected'] = False;
-    echo 'Access Denied';
-}
-?> 
-<html>
-    <!--Remember to remove in final build!
-//Best Default Credentials Ever//
-username: User
-password: SecurePa??word123 -->
+    echo ('<br>');
 
+}
+?>
+<html>
+
+
+    <!----------Footer---------->
+    <br>
+    <footer>
+        <table align="center">
+        <tr>
+            <td>
+            <a href="http://bestsiteever.com/CTF/index.php"> Home </a>
+            </td>
+            <td>
+            |
+            </td>
+            <td>
+            <a href="http://bestsiteever.com/CTF/index.php?page=aboutUs.php"> About Us </a>
+            </td>
+            <td>
+            |
+            </td>
+            <td>
+                <a href="http://bestsiteever.com/CTF/account.php"> Account </a>
+            </td>
+            <td>
+                |
+            </td>
+            <td>
+                <a href="http://bestsiteever.com/CTF/index.php?page=login.php"> Log In </a>
+            </td>
+            <td>
+            |
+            </td>
+            <td>
+                <a href="http://bestsiteever.com/CTF/index.php?page=gallery.php"> Gallery</a>
+            </td>
+            <td>
+            |
+            </td>
+            <td>
+                <a href="http://bestsiteever.com/CTF/index.php?page=feedback.php"> Feedback </a>
+            </td>
+        </tr>
+
+        </table>
+        <table align="center">
+            <tr>
+                <th>
+                    <p style="font-size:12px">Copyright &copy1833</p>
+                </th>
+            </tr>
+
+        </table>
+
+    </footer>
 </html>

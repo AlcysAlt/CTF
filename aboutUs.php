@@ -1,23 +1,47 @@
-<!DOCTYPE html>
-<?php
-// Starts the PHP session, to allow persistence of variables between web pages.
-session_start();
-// //Checks if the the session variable 'redirected' is set, deny access if empty.
-if (!isset($_SESSION['redirected']) or empty($_SESSION['redirected']) or $_SESSION['redirected'] == '') {
-    echo 'Access Denied';
-    exit; 
-    //Otherwise if redirected variable is set, empty the variable and display the web page.
-  } else if ($_SESSION['redirected'] == True){
-    echo '!ThankYouWebServer:D!';
-    //If any issues occur, display an error message.
-} else {
-    echo 'Error';
-}
-$_SESSION['redirected'] = False;
-?> 
 <html>
+<body>
+
+    <!----------Title Table---------->
+    <table align="center">
+        <tr>
+            <th>
+            <h1>About Us</h1
+            </th>
+            <th>
+        </tr>   
+    </table>
+    <!----------Link Table---------->
+    <table align="center">
+        <tr>
+
+        </tr>
 
 
+    </table>
+    <!----------Content Table---------->
+    <table align="center">
+        <tr>
+            <th>
+                <article>
+                    <p>funny joke </p>
+                </article>
+                <section>
+                    <p style="font-size:15px"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultricies magna ac magna posuere accumsan. Nam tortor ex, aliquam eu imperdiet a, finibus at est. Sed vel nunc vel quam lacinia consectetur nec eget enim. Proin vestibulum a risus eget venenatis. Fusce egestas ipsum ut libero tempus elementum. Nunc vel laoreet libero. Donec vulputate mattis dolor a pretium. </p>
+                </section>
+
+            </th>
+
+        </tr>
+    
+        
+    </table>
+  
+    
+
+
+
+
+    
     <!----------Footer---------->
     <br>
     <footer>
@@ -69,4 +93,6 @@ $_SESSION['redirected'] = False;
         </table>
 
     </footer>
+
+</body>
 </html>

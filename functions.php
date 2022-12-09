@@ -25,6 +25,7 @@ function loginQuery($conn, $username, $password){
   $query = mysqli_query($conn, $sql)
   or die ("Bad Query");
   // Echo the query for debugging purposes
+  echo('<br>');
   echo($sql);
   echo('<br>');
   return $query;
@@ -66,6 +67,7 @@ function loginForm($conn, $username, $password){
    }
 function task7(){
     if (isset($_SESSION['task7flag1']) AND $_SESSION['task7flag1'] == 1 AND isset($_SESSION['task7flag2']) AND $_SESSION['task7flag2'] = 1){
+        echo('<br>');
         echo("Congratulations on resetting an admin password! Here's the flag: !TerribleAuthenticationSystems!");
     }
 
@@ -97,7 +99,8 @@ function getAccountInfo(){
         $conn -> close();
 
     } else {
-        echo("Error: Bad Pass");
+        echo('<br>');
+        echo("Access Denied");
     }
    
 }
@@ -114,6 +117,7 @@ function displayQueryResults($results){
     while($row = mysqli_fetch_assoc($results)){
         echo"<br>";
         print_r($row);
+        
     }
 
 }

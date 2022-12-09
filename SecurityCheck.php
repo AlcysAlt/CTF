@@ -10,7 +10,7 @@ session_start();
 ?> 
 <head>
 
-<title>Security Question 1</title>
+<title>Security Questions</title>
 
 <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -20,7 +20,7 @@ session_start();
 
  <form action="SecurityCheck.php" method="post">
 
-    <h2>Security Question 1</h2>
+    <h2>Security Questions</h2>
 
     <?php if (isset($_GET['error'])) { ?>
 
@@ -79,10 +79,63 @@ session_start();
                 $page = 'login.php';
                 header('location: '. $page); 
             }
+            $_SESSION['redirected'] = False;
 ?>
 
 
 <html>
 
+
+    <!----------Footer---------->
+    <br>
+    <footer>
+        <table align="center">
+        <tr>
+            <td>
+            <a href="http://bestsiteever.com/CTF/index.php"> Home </a>
+            </td>
+            <td>
+            |
+            </td>
+            <td>
+            <a href="http://bestsiteever.com/CTF/index.php?page=aboutUs.php"> About Us </a>
+            </td>
+            <td>
+            |
+            </td>
+            <td>
+                <a href="http://bestsiteever.com/CTF/account.php"> Account </a>
+            </td>
+            <td>
+                |
+            </td>
+            <td>
+                <a href="http://bestsiteever.com/CTF/index.php?page=login.php"> Log In </a>
+            </td>
+            <td>
+            |
+            </td>
+            <td>
+                <a href="http://bestsiteever.com/CTF/index.php?page=gallery.php"> Gallery</a>
+            </td>
+            <td>
+            |
+            </td>
+            <td>
+                <a href="http://bestsiteever.com/CTF/index.php?page=feedback.php"> Feedback </a>
+            </td>
+        </tr>
+
+        </table>
+        <table align="center">
+            <tr>
+                <th>
+                    <p style="font-size:12px">Copyright &copy1833</p>
+                </th>
+            </tr>
+
+        </table>
+
+    </footer>
 
 </html>

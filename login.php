@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<html>
+    
+</html>
+
+
+
+
 <?php
 require('functions.php');
 //MySQL Source: https://www.w3schools.com/php/php_mysql_connect.asp
@@ -8,9 +15,19 @@ require('functions.php');
 session_start();
 
 ?> 
-<head>
 
-<title>LOGIN</title>
+
+<html>
+<body>
+
+    <!----------Title Table---------->
+    <table align="center">
+        <tr>
+            <th>
+            <title>LOGIN</title>
+            <head>
+
+
 
 <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -30,12 +47,8 @@ session_start();
     <input type="password" name="password" placeholder="Password"><br> 
     <input type="submit" name = "submit" value="Login">
     <input type="submit" name = "submit" value="Forgot my password">
-
-
- </form>
-
-</body>
-
+    <br> <br> 
+    
 <?php
     if (isset($_POST['submit']) AND $_POST['submit'] == 'Login'){
         if($_POST['username'] == 'User' AND $_POST['password'] == 'SecurePa??word123'){
@@ -54,7 +67,7 @@ session_start();
                 header('location: '. $page); 
                 
             } else if($loggedIn == 0){
-                echo('Couldnt validate login');
+                echo('<br>');
                 
             } else {
                 echo("Error");
@@ -65,13 +78,77 @@ session_start();
             $page = 'reset.php';
             header('location: '. $page); 
         }
+     
 
                 
 
 ?>
 
 
-<html>
+
+ </form>
+
+</body>
 
 
+            
+            </th>
+            <th>
+        </tr>   
+    </table>
+
+    
+    <!----------Footer---------->
+    <br>
+    <footer>
+        <table align="center">
+        <tr>
+            <td>
+            <a href="http://bestsiteever.com/CTF/index.php"> Home </a>
+            </td>
+            <td>
+            |
+            </td>
+            <td>
+            <a href="http://bestsiteever.com/CTF/index.php?page=aboutUs.php"> About Us </a>
+            </td>
+            <td>
+            |
+            </td>
+            <td>
+                <a href="http://bestsiteever.com/CTF/account.php"> Account </a>
+            </td>
+            <td>
+                |
+            </td>
+            <td>
+                <a href="http://bestsiteever.com/CTF/index.php?page=login.php"> Log In </a>
+            </td>
+            <td>
+            |
+            </td>
+            <td>
+                <a href="http://bestsiteever.com/CTF/index.php?page=gallery.php"> Gallery</a>
+            </td>
+            <td>
+            |
+            </td>
+            <td>
+                <a href="http://bestsiteever.com/CTF/index.php?page=feedback.php"> Feedback </a>
+            </td>
+        </tr>
+
+        </table>
+        <table align="center">
+            <tr>
+                <th>
+                    <p style="font-size:12px">Copyright &copy1833</p>
+                </th>
+            </tr>
+
+        </table>
+
+    </footer>
+
+</body>
 </html>
