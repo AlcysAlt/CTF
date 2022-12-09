@@ -37,7 +37,9 @@
     </table>
   
     
-
+<?php
+$_SESSION['redirected'] = False;
+?>
 
 
 
