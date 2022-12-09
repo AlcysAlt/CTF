@@ -37,3 +37,4 @@ $lines = explode("\n", $comments);
 foreach ($lines as $line) {
   echo "$line<br>";
 }
+?>
