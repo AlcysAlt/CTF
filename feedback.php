@@ -1,3 +1,11 @@
+
+<html>
+  <!----------Title Table---------->
+  <table align="center">
+        <tr>
+            <th>
+              <h1>User Feedback</h1>
+            
 <form action="feedback.php" method="POST">
   <textarea name="comment" placeholder="Enter your comment"></textarea><br>
   <input type="submit" value="Submit">
@@ -9,7 +17,8 @@
 </form>
 
 <?php
-
+session_start();
+$_SESSION['secret'] = False;
 // Check if the 'clear_comments' variable is set in the POST request
 if (isset($_POST['clear_comments'])) {
   // Clear the contents of the comments file
@@ -37,7 +46,16 @@ $lines = explode("\n", $comments);
 foreach ($lines as $line) {
   echo "$line<br>";
 }
+
+$_SESSION['redirected'] = '';
 ?>
+
+            </th>
+            <th>
+        </tr>   
+    </table>
+</html>
+
 <html>
 
 
@@ -62,7 +80,7 @@ foreach ($lines as $line) {
                 <a href="http://bestsiteever.com/CTF/account.php"> Account </a>
             </td>
             <td>
-                |
+            |
             </td>
             <td>
                 <a href="http://bestsiteever.com/CTF/index.php?page=login.php"> Log In </a>

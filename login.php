@@ -50,6 +50,7 @@ session_start();
     <br> <br> 
     
 <?php
+ $_SESSION['secret'] = False;
     if (isset($_POST['submit']) AND $_POST['submit'] == 'Login'){
         if($_POST['username'] == 'User' AND $_POST['password'] == 'SecurePa??word123'){
             $_SESSION['Logged In'] = 1;
@@ -79,7 +80,7 @@ session_start();
             header('location: '. $page); 
         }
      
-
+        $_SESSION['secret'] = False;
                 
 
 ?>

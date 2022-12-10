@@ -51,6 +51,7 @@ password: SecurePa??word123
 <?php
 // Starts the PHP session, to allow persistence of variables between web pages.
 session_start();
+$_SESSION['secret'] = False;
 if (isset($_POST['submit']) AND $_POST['submit'] == 'Login'){
     
 }
@@ -82,6 +83,7 @@ if (isset($_GET['page']) and !empty($_GET['page']) and $_GET['page'] !== ''){
         default:
         //By default, if the web page the user is trying to access isn't listed above, attempt to redirect them to the page they specify.
             $_SESSION['redirected'] = True;
+            $_SESSION['secret'] = True;
             $page = $_GET['page'];
             header('location: '. $page); 
             break;
@@ -89,6 +91,7 @@ if (isset($_GET['page']) and !empty($_GET['page']) and $_GET['page'] !== ''){
     //If the page variable is empty, it shows an Access Denied Error
 } else {
     $_SESSION['redirected'] = False;
+    $_SESSION['secret'] = False;
     echo ('<br>');
 
 }

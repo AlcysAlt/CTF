@@ -18,36 +18,43 @@ session_start();
 
 <body>
 
- <form action="SecurityCheck.php" method="post">
+    <!----------Title Table---------->
+    <table align="center">
+        <tr>
+            <th>
+            <form action="SecurityCheck.php" method="post">
 
-    <h2>Security Questions</h2>
+<h2>Security Questions</h2>
 
-    <?php if (isset($_GET['error'])) { ?>
+<?php if (isset($_GET['error'])) { ?>
 
-        <p class="error"><?php echo $_GET['error']; ?></p>
+    <p class="error"><?php echo $_GET['error']; ?></p>
 
-    <?php } ?>
-    <label>New Password</label><br>
-    <input type="text" name="password" placeholder="Please enter a new password"><br> 
+<?php } ?>
+<label>New Password</label><br>
+<input type="text" name="password" placeholder="Please enter a new password"><br><br>
 
-    <label>What is your favourite colour?</label><br>
-    <input type="text" name="answer1" placeholder="Answer"><br> 
+<label>What is your favourite colour?</label><br>
+<input type="text" name="answer1" placeholder="Security Answer 1"><br><br>
 
-    <label>Whare were you born?</label><br>
-    <input type="text" name="answer2" placeholder="Answer"><br> 
+<label>Where were you born?</label><br>
+<input type="text" name="answer2" placeholder="Security Answer 2"><br><br>
 
-    <label>What is your favourite movie?</label><br>
-    <input type="text" name="answer3" placeholder="Answer"><br> 
+<label>What is your favourite movie?</label><br>
+<input type="text" name="answer3" placeholder="Security Answer 3"><br><br>
 
-    <input type="submit" name = "submit" value="Submit">
-    <input type="submit" name = "submit" value="Back to Login"><br>
+<input type="submit" name = "submit" value="Submit">
+<input type="submit" name = "submit" value="Back to Login"><br>
 
 
- </form>
+</form>
+
+            <head>
 
 </body>
 
 <?php
+ $_SESSION['secret'] = False;
         //When the submit button is clicked and the required fields are filled.
         if (isset($_POST['submit']) AND $_POST['submit'] == 'Submit' AND isset($_SESSION['Username']) AND isset($_POST['password'])){
            //if the required fields 
@@ -80,6 +87,7 @@ session_start();
                 header('location: '. $page); 
             }
             $_SESSION['redirected'] = False;
+           
 ?>
 
 

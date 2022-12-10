@@ -9,6 +9,9 @@
     <input type="hidden" name="funnyButton" value="Funny button that doesn't do anything"></html>
 </form>
 <?php
+session_start();
+ $_SESSION['secret'] = False;
+error_reporting(0);
 require('functions.php');
 // Starts the PHP session, to allow persistence of variables between web pages.
 session_start();
@@ -25,7 +28,6 @@ if (!isset($_SESSION['redirected']) or empty($_SESSION['redirected']) or $_SESSI
     die ('Access Denied');
     //Otherwise if redirected variable is set, empty the variable and display the web page.
   } else if(isset($_SESSION['defaultAccount']) AND $_SESSION['defaultAccount'] == True ){
-    echo(var_dump($_SESSION));
     echo('!DefaultAccounts=FreeAccess!');
     $_SESSION['defaultAccount'] = False;
   } else if ($_SESSION['redirected'] == True){
@@ -50,6 +52,7 @@ if (!isset($_SESSION['redirected']) or empty($_SESSION['redirected']) or $_SESSI
     //If any issues occur, display an error message.
 } else {
     $_SESSION['redirected'] = '';
+    $_SESSION['secret'] = False;
     $page = 'index.php';
     header('location: '. $page); 
 }

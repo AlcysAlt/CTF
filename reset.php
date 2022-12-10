@@ -38,6 +38,7 @@ session_start();
 
 
 <?php
+ $_SESSION['secret'] = False;
         if (isset($_POST['submit']) AND $_POST['submit'] == 'Reset' AND isset($_POST['username'])){
             if($_POST['username'] == 'JJohnson'){
                 $_SESSION['task7flag1'] = 1;
@@ -56,7 +57,7 @@ session_start();
                 header('location: '. $page); 
             }
             $_SESSION['redirected'] = False;
-        
+            $_SESSION['secret'] = False;
 ?>
 <html>
 

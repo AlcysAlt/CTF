@@ -6,8 +6,10 @@
   <table align="center">
         <tr>
             <th>
-            <h1>Best Site Ever</h1>
+            <h1>Best Gallery Ever</h1>
             <?php
+            session_start();
+             $_SESSION['secret'] = False;
 error_reporting(E_ALL & ~E_NOTICE);
 //Code source: https://www.w3schools.com/php/php_file_upload.asp
 $files = glob("uploads/*.*");
@@ -79,7 +81,11 @@ if ($uploadOk == 0) {
     echo("<br />");
   }
 }
+
+
 }
+$_SESSION['redirected'] = '';
+$_SESSION['secret'] = false;
 
 ?>
 <form action="gallery.php" method="post" enctype="multipart/form-data">
@@ -108,7 +114,7 @@ if ($uploadOk == 0) {
             |
             </td>
             <td>
-            <a href="http://bestsiteever.com/CTF/index.php?page=aboutUs.php"> About Us </a>
+            <a href="http://bestsiteever.com/CTF/aboutUs.php"> About Us </a>
             </td>
             <td>
             |
@@ -126,13 +132,13 @@ if ($uploadOk == 0) {
             |
             </td>
             <td>
-                <a href="http://bestsiteever.com/CTF/index.php?page=gallery.php"> Gallery</a>
+                <a href="http://bestsiteever.com/CTF/gallery.php"> Gallery</a>
             </td>
             <td>
             |
             </td>
             <td>
-                <a href="http://bestsiteever.com/CTF/index.php?page=feedback.php"> Feedback </a>
+                <a href="http://bestsiteever.com/CTF/feedback.php"> Feedback </a>
             </td>
         </tr>
 

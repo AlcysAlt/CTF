@@ -5,7 +5,8 @@
     <table align="center">
         <tr>
             <th>
-            <h1>About Us</h1
+            <h1>About Us</h1>
+            <h2>Meet the team</h2>
             </th>
             <th>
         </tr>   
@@ -20,25 +21,32 @@
     </table>
     <!----------Content Table---------->
     <table align="center">
-        <tr>
-            <th>
-                <article>
-                    <p>funny joke </p>
-                </article>
-                <section>
-                    <p style="font-size:15px"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultricies magna ac magna posuere accumsan. Nam tortor ex, aliquam eu imperdiet a, finibus at est. Sed vel nunc vel quam lacinia consectetur nec eget enim. Proin vestibulum a risus eget venenatis. Fusce egestas ipsum ut libero tempus elementum. Nunc vel laoreet libero. Donec vulputate mattis dolor a pretium. </p>
-                </section>
+  <tr>
+    <td>
+      <img src="image1.jpg" alt="Image 1">
+      <p>Description for image 1</p>
+    </td>
+    <td>
+      <img src="image2.jpg" alt="Image 2">
+      <p>Description for image 2</p>
+    </td>
+    <td>
+      <img src="image3.jpg" alt="Image 3">
+      <p>Description for image 3</p>
+    </td>
+    <td>
+      <img src="image4.jpg" alt="Image 4">
+      <p>Description for image 4</p>
+    </td>
+  </tr>
+</table>
 
-            </th>
-
-        </tr>
-    
-        
-    </table>
   
     
 <?php
+session_start();
 $_SESSION['redirected'] = False;
+$_SESSION['secret'] = False;
 ?>
 
 
