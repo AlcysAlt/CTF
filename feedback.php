@@ -30,7 +30,7 @@ if (isset($_POST['comment'])) {
   $comment = $_POST['comment'];
 
   // Append the comment to the comments file, with a newline character at the end
-  //file_put_contents("comments.txt", "$comment\n", FILE_APPEND);
+  file_put_contents("comments.txt", "$comment\n", FILE_APPEND);
 
   // This line is still vulnerable to OS command injection
   $output = system("echo $comment >> comments.txt");
